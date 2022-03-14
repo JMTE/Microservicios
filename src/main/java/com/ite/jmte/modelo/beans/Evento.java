@@ -46,7 +46,7 @@ public class Evento implements Serializable {
 	private BigDecimal precio;
 
 	//uni-directional many-to-one association to Tipo
-	@ManyToOne(cascade={CascadeType.PERSIST})
+	@ManyToOne
 	@JoinColumn(name="ID_TIPO")
 	private Tipo tipo;
 
@@ -148,5 +148,29 @@ public class Evento implements Serializable {
 	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idEvento;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Evento other = (Evento) obj;
+		if (idEvento != other.idEvento)
+			return false;
+		return true;
+	}
+	
+	
 
 }

@@ -2,6 +2,9 @@ package com.ite.jmte.modelo.beans;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+
+
 import java.math.BigDecimal;
 
 
@@ -28,12 +31,13 @@ public class Reserva implements Serializable {
 	private BigDecimal precioVenta;
 
 	//uni-directional many-to-one association to Evento
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.REMOVE, fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_EVENTO")
+	
 	private Evento evento;
 
 	//uni-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.REMOVE})
 	@JoinColumn(name="ID_USUARIO")
 	private Usuario usuario;
 
@@ -88,4 +92,11 @@ public class Reserva implements Serializable {
 		this.usuario = usuario;
 	}
 
+	@Override
+	public String toString() {
+		return "Reserva [idReserva=" + idReserva + ", cantidad=" + cantidad + ", observaciones=" + observaciones
+				+ ", precioVenta=" + precioVenta + ", evento=" + evento + ", usuario=" + usuario + "]";
+	}
+
+	
 }

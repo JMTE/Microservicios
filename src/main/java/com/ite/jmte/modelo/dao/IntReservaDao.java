@@ -1,14 +1,16 @@
 package com.ite.jmte.modelo.dao;
 
-import java.util.List;
 
-import com.ite.jmte.modelo.beans.Reserva;
 
 public interface IntReservaDao {
 
-	List<Reserva> findAll();
 	
-	List<Reserva> findReservasByIdEvento(int idEvento);
+	
+	
+	//Creamos un metodo que nos devuelva el numero de reservas existentes para un idEvento
 	
 	int ReservasPorEvento(int idEvento);
+	
+
+	
 }
